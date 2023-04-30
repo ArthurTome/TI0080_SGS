@@ -1,0 +1,14 @@
+{
+  "name": "ti0080_sgs",
+  "version": "1.0.0",
+  "description": "Um sistema de gestão clinica basico",
+  "main": "sgs.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Arthur and Neander",
+  "license": "BSD-1-Clause",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
