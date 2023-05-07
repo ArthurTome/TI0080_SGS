@@ -1,0 +1,37 @@
+.menu_lat{
+    margin-top: 20px;
+    float: left;
+    border: solid red 1px;
+    width: 300px;
+    height: fit-content;
+    
+}
+
+.menu_lat_item{
+    text-align: center;
+    border: solid blue 1px;
+    padding: 10px 0px;
+}
+
+.user_data_space{
+    float: left;
+    border: solid red 1px;
+    width: 50%;
+    /*height: fit-content;*/
+    height: 600px;
+}
+
+.user_info{
+    border: solid red 1px;
+    width: 100%;
+}
+
+.user_cons{
+    border: solid blue 1px;
+    width: 100%;
+}
+
+.user_hist{
+    border: solid green 1px;
+    width: 100%;
+}
