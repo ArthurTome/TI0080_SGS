@@ -1,0 +1,77 @@
+@keyframes nav-fade {
+    0%   {background-color: #C6F5F0}
+    100%  {background-color: #77A8A3;}
+}
+
+html{
+    font-family: 'Open Sans', sans-serif;
+}
+body{
+    position: relative;
+    height: 100vh;
+}
+
+p, body, footer{
+    margin: 0 0;
+    padding: 0 0;
+}
+
+h1{
+    font-weight: normal;
+    
+    font-size: 4vh;
+    padding-bottom: none;
+    padding-bottom: 1vh;
+}
+
+a:link, a:visited {
+    color: black;
+    text-decoration-line: none;
+}
+
+a:hover {
+    animation: 0.5s;
+    animation-name: nav-fade;
+    background-color: #77A8A3;
+}
+
+nav {
+    background-color: #C6F5F0;
+    position: relative;
+    overflow: hidden;
+    width: auto;
+    height: 6vh;
+    border-bottom: solid #77A8A3 1px;
+    
+}
+
+nav a{
+    display: flex;
+    float:left;
+    padding: 2vh 2vw;
+}
+
+.nav_img{
+    padding: 0 0;
+    height: 100%;
+}
+
+nav img{
+    height: 100%;
+    background-size: cover;
+}
+
+footer{
+    background-color: #C6F5F0;
+    border-top: solid #77A8A3 1px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.login_itens{
+    float: right;
+    margin-right: 0vw;
+    margin-left: 2px;
+}

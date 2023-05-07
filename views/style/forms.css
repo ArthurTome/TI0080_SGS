@@ -1,0 +1,50 @@
+.login_form{
+    border-radius: 4px;
+    margin: auto;
+    margin-top: 10vh;
+    max-width: 500px;
+    border-radius: 10px;
+    border: solid #77A8A3 1px;
+    background-color: #C6F5F0;
+}
+
+.login_form h1{
+    text-align: center;
+}
+
+form{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-left: 2vw;
+    padding-right: 2vw;
+}
+
+input{
+    width: 100%;
+    height: 30px;
+    margin-bottom: 1vh;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid #77A8A3;
+}
+
+@keyframes button-fade {
+    0%   {background-color: white}
+    100%  {background-color: #77A8A3;}
+}
+
+input[type=submit]{
+    background-color: white;
+    width: 60%;
+    align-self: flex-end;
+    padding-right: 0;
+    margin-right: 0
+}
+
+input[type=submit]:hover{
+    animation: 0.5s;
+    animation-name: button-fade;
+    background-color: #77A8A3;
+}
+
