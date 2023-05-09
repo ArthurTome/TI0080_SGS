@@ -32,6 +32,22 @@
 
             <a href="singin.html" class="login_itens">
                 Entrar</a>
+
+                <a>
+                    <input type="range" min="0" max="255" step="1" id="colorPicker" onchange="changeColor(event)"
+                        size="10px">
+                </a>
+    
+                <script>
+                    function changeColor(event) {
+                        var slider = event.target;
+                        var red = slider.value;
+                        var green = slider.value;
+                        var blue = slider.value;
+                        var color = 'rgb(' + red + ', ' + green + ', ' + blue + ')';
+                        document.body.style.backgroundColor = color;
+                    }
+                </script>
         </nav>
     </header>
 
