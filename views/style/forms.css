@@ -42,6 +42,22 @@ input[type=submit]{
     margin-right: 0
 }
 
+input[type=reset]{
+    background-color: white;
+    width: 60%;
+    align-self: flex-end;
+    padding-right: 0;
+    margin-right: 0
+}
+
+input[type=color]{
+    scrollbar-color:initial;
+    background-color: white;
+    width: 5px;
+    align-self: flex-end;
+
+}
+
 input[type=submit]:hover{
     animation: 0.5s;
     animation-name: button-fade;

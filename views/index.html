@@ -28,15 +28,35 @@
         <a href="singup.html" class="login_itens"> Criar Conta</a>
 
         <a href="singin.html" class="login_itens"> Entrar</a>
+        
+        <a>
+          <input type="range" min="0" max="255" step="1" id="colorPicker" onchange="changeColor(event)">
+        </a>
+        
+        <script>
+          function changeColor(event) {
+            var slider = event.target;
+            var red = slider.value;
+            var green = slider.value;
+            var blue = slider.value;
+            var color = 'rgb(' + red + ', ' + green + ', ' + blue + ')';
+            document.body.style.backgroundColor = color;
+          }
+        </script>
+        
+
+
+
+
       </nav>
     </header>
 
     <br />
-    <nav class="images">
+    
       <div>
-        <img src="img/Mdica_PNG.png" alt="image" />
+        <img id="image1" src="img/Mdica_PNG.png" alt="image" />
       </div>
-    </nav>
+   
 
     <footer>
       <p>TI0080 SGS</p>
