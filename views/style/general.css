@@ -67,6 +67,12 @@ nav img{
     background-size: cover;
 }
 
+nav .images{
+    width: 100%;
+    height: 100%;
+    padding: 0 0;
+}
+
 footer{
     background-color: #C6F5F0;
     border-top: solid #77A8A3 1px;

@@ -1,0 +1,167 @@
+.menu_lat{
+  margin-top: 20px;
+  float: left;
+  border: solid red 1px;
+  width: 300px;
+  height: fit-content;
+  
+}
+@keyframes nav-fade {
+  0%   {background-color: #C6F5F0}
+  100%  {background-color: #77A8A3;}
+}
+
+html{
+  font-family: 'Open Sans', sans-serif;
+}
+body{
+  position: relative;
+  height: 100vh;
+}
+
+p, body, footer{
+  margin: 0 0;
+  padding: 0 0;
+}
+
+h1{
+  font-weight: normal;
+  font-size: 4vh;
+  padding-bottom: none;
+  
+}
+
+h2{
+  text-align: center;
+  font-weight: bold;
+  font-size: 2vh;
+  padding-bottom: none;
+}
+
+a:link, a:visited {
+  color: black;
+  text-decoration-line: none;
+}
+
+a:hover {
+  animation: 0.5s;
+  animation-name: nav-fade;
+  background-color: #77A8A3;
+}
+
+nav {
+  background-color: #C6F5F0;
+  position: relative;
+  overflow: hidden;
+  width: auto;
+  height: 6vh;
+  border-bottom: solid #77A8A3 1px;
+  
+}
+
+nav a{
+  display: flex;
+  float:left;
+  padding: 2vh 2vw;
+}
+
+.nav_img{
+  padding: 0 0;
+  height: 100%;
+}
+
+nav img{
+  height: 100%;
+  background-size: cover;
+}
+
+nav .images{
+  width: 100%;
+  height: 100%;
+}
+
+footer{
+  background-color: #C6F5F0;
+  border-top: solid #77A8A3 1px;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.login_itens{
+  float: right;
+  margin-right: 0vw;
+  margin-left: 2px;
+}
+.menu_lat_item{
+  text-align: center;
+  border: solid blue 1px;
+  padding: 10px 0px;
+}
+
+.user_data_space{
+  float: left;
+  border: solid red 1px;
+  width: 50%;
+  /*height: fit-content;*/
+  height: 600px;
+}
+
+.user_info{
+  border: solid red 1px;
+  width: 100%;
+}
+
+.user_cons{
+  border: solid blue 1px;
+  width: 100%;
+}
+
+.user_hist{
+  border: solid green 1px;
+  width: 100%;
+}
+
+.menu_lat{
+  margin-top: 20px;
+  float: left;
+  border: solid red 1px;
+  width: 300px;
+  height: fit-content;
+  
+}
+
+.menu_lat_item{
+  text-align: center;
+  border: solid blue 1px;
+  padding: 10px 0px;
+}
+
+.user_data_space{
+  float: left;
+  border: solid red 1px;
+  width: 50%;
+  /*height: fit-content;*/
+  height: 600px;
+}
+
+.user_info{
+  border: solid red 1px;
+  width: 100%;
+}
+
+.user_cons{
+  border: solid blue 1px;
+  width: 100%;
+}
+
+.user_hist{
+  border: solid green 1px;
+  width: 100%;
+}
+
+.images{
+  background-color: aliceblue;
+  width: 100%;
+}
