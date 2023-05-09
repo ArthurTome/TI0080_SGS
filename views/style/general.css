@@ -69,16 +69,33 @@ nav img{
 #image1 {
     width: 50%;
     float: left;
-    position:fixed;
+    
     padding: 0 0;
     
+}
+
+#image2 {
+    width: 50%;
+    float: left;
+    
+    padding: 0 0;
+    
+}
+
+
+input[type=reset]{
+    background-color: white;
+    width: 60%;
+    align-self: flex-end;
+    padding-right: 0;
+    margin-right: 0
 }
 
 footer{
     background-color: #C6F5F0;
     border-top: solid #77A8A3 1px;
     text-align: center;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
 }
