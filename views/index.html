@@ -1,67 +1,108 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="style/forms.css" />
-    <link rel="stylesheet" href="style/general.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Open+Sans"
-    />
-    <title>Gestão Saúde</title>
 
-    <script>
-      function NigthMode(event) {
-        var checked = document.getElementById("nigth_check").checked
-        if(checked){
-          var color = 'rgb(' + 0 + ', ' + 0 + ', ' + 0 + ')';
-          document.body.style.backgroundColor = color;
-        }else{
-          var color = 'rgb(' + 255 + ', ' + 255 + ', ' + 255 + ')';
-          document.body.style.backgroundColor = color;
-        }
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="style/forms.css" />
+  <link rel="stylesheet" href="style/general.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans" />
+  <title>Gestão Saúde</title>
+
+  <script>
+    function NigthMode(event) {
+      var checked = document.getElementById("nigth_check").checked
+      if (checked) {
+        var color = 'rgb(' + 0 + ', ' + 0 + ', ' + 0 + ')';
+        document.body.style.backgroundColor = color;
+      } else {
+        var color = 'rgb(' + 255 + ', ' + 255 + ', ' + 255 + ')';
+        document.body.style.backgroundColor = color;
       }
-    </script>
+    }
 
-  </head>
+    function aumentarTamanho() {
+      var objeto = document.getElementById("header_index");
+      var width = objeto.offsetWidth;
+      var height = objeto.offsetHeight;
+      objeto.style.width = width + 10 + "px";
+      objeto.style.height = height + 10 + "px";
+      var texto = document.getElementById("header_text");
+      var fontSize = parseInt(window.getComputedStyle(texto).fontSize);
 
-  <body>
-    <header>
-      <nav>
-        <a href="index.html" title="Gestão Saúde" class="nav_img nav_element">
-          <img src="img/logo-removebg.png" alt="system logo"/>
-        </a>
-        <a class="nav_element"> Sua Saude</a>
-        <a class="nav_element"> Atendimento</a>
-        <a class="nav_element"> Nossa Equipe</a>
+      objeto.style.width = (width + 10) + "px";
+      objeto.style.height = (height + 10) + "px";
+      texto.style.fontSize = (fontSize + 2) + "px";
+    }
 
-        <div class="nav_slide_element">
-          <input id="nigth_check" class="apple-switch" type="checkbox" onclick="NigthMode(event)">
-        </div>
-        <a href="singup.html" class="nav_element login_itens"> Criar Conta</a>
+    function diminuirTamanho() {
+      var objeto = document.getElementById("header_index");
+      var width = objeto.offsetWidth;
+      var height = objeto.offsetHeight;
+      objeto.style.width = width - 10 + "px";
+      objeto.style.height = height - 10 + "px";
+      var texto = document.getElementById("header_text");
+      var fontSize = parseInt(window.getComputedStyle(texto).fontSize);
+      objeto.style.width = (width - 10) + "px";
+      objeto.style.height = (height - 10) + "px";
+      texto.style.fontSize = (fontSize - 2) + "px";
+    }
 
-        <a href="singin.html" class="nav_element login_itens"> Entrar</a>
+  </script>
 
-      </nav>
-    </header>
+</head>
 
-    <br />
-    
-      <div>
-        <img id="image1" src="img/Mdica_PNG.png" alt="image" />
+<body>
+  <header class="header_index">
+    <nav>
+      <a href="index.html" title="Gestão Saúde" class="nav_img nav_element">
+        <img src="img/logo-removebg.png" alt="system logo" />
+      </a>
+      <a class="nav_element"> Sua Saude</a>
+      <a class="nav_element"> Atendimento</a>
+      <a class="nav_element"> Nossa Equipe</a>
+
+      <div class="nav_slide_element">
+        <input id="nigth_check" class="apple-switch" type="checkbox" onclick="NigthMode(event)">
       </div>
+      <a href="singup.html" class="nav_element login_itens"> Criar Conta</a>
 
-      <div>
-        <img id="image2" src="img/logo_g.png" alt="image" />
-      </div>
-   
+      <a href="singin.html" class="nav_element login_itens"> Entrar</a>
 
-    <footer>
-      <p>TI0080 SGS</p>
-    </footer>
-  </body>
+      <a class="nav_element login_itens">
+        <i class="fa fa-search-plus" onclick="aumentarTamanho()" style="font-size: 24px"></i>
+      </a>
+      <a class="nav_element login_itens">
+        <i class="fa fa-search-minus" onclick="diminuirTamanho()" style="font-size: 24px"></i>
+      </a>
+
+      <a class="social_icons nav_element login_itens">
+        <i class="fa fa-facebook" style="font-size: 24px"></i>
+      </a>
+      <a class="social_icons nav_element login_itens">
+        <i class="fa fa-twitter" style="font-size: 24px"></i>
+      </a>
+      <a class="social_icons nav_element login_itens">
+        <i class="fa fa-google" style="font-size: 24px"></i>
+      </a>
+
+    </nav>
+  </header>
+
+  <br />
+
+  <div>
+    <img id="image1" src="img/Mdica_PNG.png" alt="image" />
+  </div>
+
+  <div>
+    <img id="image2" src="img/logo_g.png" alt="image" />
+  </div>
+
+
+  <footer>
+    <p>TI0080 SGS</p>
+  </footer>
+</body>
+
 </html>
