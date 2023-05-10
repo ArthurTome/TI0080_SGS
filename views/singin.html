@@ -13,42 +13,38 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Open+Sans"
     />
+    <script>
+        function NigthMode(event) {
+          var checked = document.getElementById("nigth_check").checked
+          if(checked){
+            var color = 'rgb(' + 50 + ', ' + 25 + ', ' + 80 + ')';
+            document.body.style.backgroundColor = color;
+          }else{
+            var color = 'rgb(' + 0 + ', ' + 0 + ', ' + 0 + ')';
+            document.body.style.backgroundColor = color;
+          }
+        }
+      </script>
   </head>
 
   <body>
     <header>
         <nav>
-            <a href="index.html" title="Gestão Saúde" class="nav_img">
-                <img src="img/logo-removebg.png"></a>
-            <a>
-                Sua Saude</a>
-            <a>
-                Atendimento</a>
-            <a>
-                Nossa Equipe</a>
-            
-            <a href="singup.html" class="login_itens"> 
-                Criar Conta</a>
-
-            <a href="singin.html" class="login_itens">
-                Entrar</a>
-
-                <a>
-                    <input type="range" min="0" max="255" step="1" id="colorPicker" onchange="changeColor(event)"
-                        size="10px">
-                </a>
+            <a href="index.html" title="Gestão Saúde" class="nav_img nav_element">
+              <img src="img/logo-removebg.png" alt="system logo"/>
+            </a>
+            <a class="nav_element"> Sua Saude</a>
+            <a class="nav_element"> Atendimento</a>
+            <a class="nav_element"> Nossa Equipe</a>
     
-                <script>
-                    function changeColor(event) {
-                        var slider = event.target;
-                        var red = slider.value;
-                        var green = slider.value;
-                        var blue = slider.value;
-                        var color = 'rgb(' + red + ', ' + green + ', ' + blue + ')';
-                        document.body.style.backgroundColor = color;
-                    }
-                </script>
-        </nav>
+            <div class="nav_slide_element">
+              <input id="nigth_check" class="apple-switch" type="checkbox" onclick="NigthMode(event)">
+            </div>
+            <a href="singup.html" class="nav_element login_itens"> Criar Conta</a>
+    
+            <a href="singin.html" class="nav_element login_itens"> Entrar</a>
+    
+          </nav>
     </header>
 
     <div class="login_form">

@@ -42,19 +42,25 @@ a:hover {
 }
 
 nav {
-    background-color: #C6F5F0;
     position: relative;
     overflow: hidden;
     width: auto;
     height: 6vh;
+    background-color: #C6F5F0;
     border-bottom: solid #77A8A3 1px;
     
 }
 
-nav a{
+.nav_element{
     display: flex;
     float:left;
     padding: 2vh 2vw;
+}
+
+.nav_slide_element{
+    display: flex;
+    float:left;
+    padding: 1vh 2vw;
 }
 
 .nav_img{
@@ -104,4 +110,32 @@ footer{
     float: right;
     margin-right: 0vw;
     margin-left: 2px;
+}
+
+input.apple-switch {
+    position: relative;
+    appearance: none; outline: none;
+    width: 50px; height: 30px;
+    background-color: #ffffff; border: 1px solid #fffb00;
+    border-radius: 50px; box-shadow: inset -20px 0 0 0 #fffb00;
+    transition-duration: 200ms;
+    }
+
+input.apple-switch:after {
+content: "";
+position: absolute;
+top: 1px; left: 1px;
+width: 26px; height: 26px;
+background-color: transparent;
+border-radius: 50%; box-shadow: 2px 4px 6px rgba(0,0,0,0.2);
+}
+
+input.apple-switch:checked {
+    border-color: #D9DADC;
+    box-shadow: inset 20px 0 0 0 #000000;
+}
+
+input.apple-switch:checked:after {
+    left: 20px;
+    box-shadow: -2px 4px 3px rgba(0,0,0,0.05);
 }
