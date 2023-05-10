@@ -52,7 +52,7 @@ nav {
 .nav_element{
     display: flex;
     float:left;
-    padding: 2vh 2vw;
+    padding: 2vh 1vw;
 }
 
 .nav_slide_element{

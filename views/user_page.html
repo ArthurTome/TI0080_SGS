@@ -17,20 +17,46 @@
         function NigthMode(event) {
           var checked = document.getElementById("nigth_check").checked
           if(checked){
-            var color = 'rgb(' + 0 + ', ' + 0 + ', ' + 0 + ')';
+            var color = 'rgb(' + 125 + ', ' + 125 + ', ' + 125 + ')';
             document.body.style.backgroundColor = color;
           }else{
             var color = 'rgb(' + 255 + ', ' + 255 + ', ' + 255 + ')';
             document.body.style.backgroundColor = color;
           }
         }
+        function aumentarTamanho() {
+            var objeto = document.getElementById("header_index");
+            var width = objeto.offsetWidth;
+            var height = objeto.offsetHeight;
+            //objeto.style.width = width + 10 + "px";
+            objeto.style.height = height + 10 + "px";
+            var texto = document.getElementById("header_text");
+            var fontSize = parseInt(window.getComputedStyle(texto).fontSize);
+
+            //objeto.style.width = (width + 10) + "px";
+            objeto.style.height = (height + 10) + "px";
+            texto.style.fontSize = (fontSize + 2) + "px";
+        }
+
+        function diminuirTamanho() {
+            var objeto = document.getElementById("header_index");
+            var width = objeto.offsetWidth;
+            var height = objeto.offsetHeight;
+            //objeto.style.width = width - 10 + "px";
+            objeto.style.height = height - 10 + "px";
+            var texto = document.getElementById("header_text");
+            var fontSize = parseInt(window.getComputedStyle(texto).fontSize);
+            //objeto.style.width = (width - 10) + "px";
+            objeto.style.height = (height - 10) + "px";
+            texto.style.fontSize = (fontSize - 2) + "px";
+        }
     </script>
     
   </head>
 
   <body>
-    <header>
-        <nav>
+    <header id="header_index">
+        <nav id="header_text">
             <a href="index.html" title="Gestão Saúde" class="nav_img nav_element">
               <img src="img/logo-removebg.png" alt="system logo"/>
             </a>
@@ -44,6 +70,23 @@
             <a href="singup.html" class="nav_element login_itens"> Criar Conta</a>
     
             <a href="singin.html" class="nav_element login_itens"> Entrar</a>
+
+            <a class="nav_element login_itens" onclick="aumentarTamanho()">
+                <i class="fa fa-search-plus" style="font-size: 24px"></i>
+              </a>
+              <a class="nav_element login_itens" onclick="diminuirTamanho()">
+                <i class="fa fa-search-minus" style="font-size: 24px"></i>
+              </a>
+        
+              <a class="social_icons nav_element login_itens">
+                <i class="fa fa-facebook" style="font-size: 24px"></i>
+              </a>
+              <a class="social_icons nav_element login_itens">
+                <i class="fa fa-twitter" style="font-size: 24px"></i>
+              </a>
+              <a class="social_icons nav_element login_itens">
+                <i class="fa fa-google" style="font-size: 24px"></i>
+              </a>
     
           </nav>
     </header>
