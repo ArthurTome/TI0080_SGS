@@ -19,7 +19,6 @@ p, body, footer{
 h1{
     font-weight: normal;
     font-size: 4vh;
-    padding-bottom: none;
     
 }
 
@@ -27,7 +26,6 @@ h2{
     text-align: center;
     font-weight: bold;
     font-size: 2vh;
-    padding-bottom: none;
 }
 
 a:link, a:visited {
@@ -116,7 +114,7 @@ input.apple-switch {
     position: relative;
     appearance: none; outline: none;
     width: 50px; height: 30px;
-    background-color: #ffffff; border: 1px solid #fffb00;
+    background-color: #ffffff; border: 1px solid #ffffff;
     border-radius: 50px; box-shadow: inset -20px 0 0 0 #fffb00;
     transition-duration: 200ms;
     }
@@ -131,7 +129,7 @@ border-radius: 50%; box-shadow: 2px 4px 6px rgba(0,0,0,0.2);
 }
 
 input.apple-switch:checked {
-    border-color: #D9DADC;
+    border-color: #888888;
     box-shadow: inset 20px 0 0 0 #000000;
 }
 

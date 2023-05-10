@@ -27,7 +27,6 @@ p, body, footer{
 h1{
   font-weight: normal;
   font-size: 4vh;
-  padding-bottom: none;
   
 }
 
@@ -35,7 +34,6 @@ h2{
   text-align: center;
   font-weight: bold;
   font-size: 2vh;
-  padding-bottom: none;
 }
 
 a:link, a:visited {
