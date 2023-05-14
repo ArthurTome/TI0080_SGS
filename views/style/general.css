@@ -48,6 +48,17 @@ nav {
     border-bottom: solid #77A8A3 1px;
     
 }
+footer p{
+    float: left;
+    display: flexbox;
+}
+
+.social_icons:hover{
+    display: flex;
+    float: right;
+    padding: 2vh 1vw;
+    color: #fffb00;
+}
 
 .nav_element{
     display: flex;
