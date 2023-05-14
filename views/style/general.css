@@ -49,8 +49,8 @@ nav {
     
 }
 footer p{
-    float: left;
-    display: flexbox;
+    display:inline;
+    padding: 2vh 1vw;
 }
 
 .social_icons:hover{
