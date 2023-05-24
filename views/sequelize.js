@@ -18,7 +18,7 @@ sequelize.authenticate().then(function(){
 })
 */
 
-const users = sequelize.define('users', {
+const Users = sequelize.define('users', {
     nome: {
         type: Sequelize.STRING
     },
@@ -27,7 +27,7 @@ const users = sequelize.define('users', {
     }
 });
 
-const services = sequelize.define('services', {
+const Services = sequelize.define('services', {
     nome_service: {
         type: Sequelize.STRING
     },
