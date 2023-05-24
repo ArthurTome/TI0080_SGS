@@ -30,6 +30,7 @@ const Users = sequelize.define('users', {
     },
 })
 
+
 const Services = sequelize.define('services', {
     nome_service: {
         type: Sequelize.STRING
@@ -37,4 +38,5 @@ const Services = sequelize.define('services', {
     
 })
 
-//Users.sync({force: true});
+
+//Services.sync({force: true});
