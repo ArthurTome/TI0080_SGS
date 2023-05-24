@@ -5,10 +5,13 @@
 */
 
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize("sequelize", 'root', 'Bia220614', {
+const sequelize = new Sequelize("sequelize",
+    'root', 'Bia220614', 
+    {
     host: 'localhost',
     dialect: 'mysql'
-});
+    }
+    );
 
 /*
 sequelize.authenticate().then(function(){
@@ -24,14 +27,14 @@ const Users = sequelize.define('users', {
     },
     email: {
         type: Sequelize.STRING
-    }
-});
+    },
+})
 
 const Services = sequelize.define('services', {
     nome_service: {
         type: Sequelize.STRING
     },
     
-});
+})
 
-//services.sync({force: true})
+//Users.sync({force: true});
