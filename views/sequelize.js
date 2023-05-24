@@ -4,14 +4,6 @@
   BANCO DE DADOS
 */
 
-const Sequelize = require('sequelize');
-const sequelize = new Sequelize("sequelize",
-    'root', 'Bia220614', 
-    {
-    host: 'localhost',
-    dialect: 'mysql'
-    }
-    );
 
 /*
 sequelize.authenticate().then(function(){
