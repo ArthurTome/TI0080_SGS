@@ -1,7 +1,7 @@
 const express = require("express");
 const handlebars = require('express-handlebars');
 const bodyParser = require("body-parser");
-const User = require("./models/User");
+const User = require(".src/models/User");
 const app = express();
 
 // config
