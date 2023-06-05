@@ -74,7 +74,7 @@ footer p{
 
 .nav_img{
     padding: 0 0;
-    height: 100%;
+    height: 5vh;
 }
 
 nav img{

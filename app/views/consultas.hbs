@@ -1,0 +1,80 @@
+<!--
+Esse html é utilizado para mostrar todos as 
+consultas realizadas por determinado paciente
+-->
+{{{body}}}
+<nav id="nav_hor">
+  <ul>
+    <li>
+      <a href="#">Dados Pessoais</a>
+    </li>
+    <li>
+      <a href="#">Marcar Consulta</a>
+    </li>
+    <li>
+      <a href="#">Marcar Exame</a>
+    </li>
+    
+    <li>
+      <a href="#">Fatura</a>
+    </li>
+    <li>      
+        <ul id="mainMenu">
+                <a href="#" >Histórico</a>
+            <li>
+                <a href="#">Consultas Realizadas</a>
+            </li>
+            <li>
+                <a href="#">Exames Realizados</a>
+            </li>
+        </ul>      
+    </li>
+  </ul>
+
+</nav>
+
+<a>
+  <i class="fa fa-search" style="font-size: 15px"></i>
+</a>
+
+
+<div class="user_data_space">
+    <h2> Consultas Realizadas</h2>
+  <table class="tables_data">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome do Paciente</th>
+        <th>Descrição Consulta</th>
+        <th>Data de Nascimento</th>
+        <th>Data da consulta</th>
+        <th>Nome do Médico</th>
+        <th>Local</th>
+        <th>Deletar</th>
+    </tr>
+    </thead>
+    <tbody>
+      {{#each consultas}}
+    <tr>
+        <td>{{this.id}}</td>
+        <td>{{this.pacient_name}}</td>
+        <td>{{this.description_consult}}</td>
+        <td>{{this.data_nasc}}</td>
+        <td>{{this.createdAt}}</td>
+        <td>{{this.doctor_name}}</td>
+        <td>{{this.local_consul}}</td>
+        <td>
+          <form action="/del_cons/{{this.id}}" method="POST">
+            <button type="submit" class="btn btn-link" style="padding: 0;">
+              <i class="fa fa-trash" style="font-size: 20px"></i>
+            </button>
+          </form>
+        </td>
+    </tr>
+      {{/each}}
+     
+    </tbody>
+      
+  </table>
+</div>
+

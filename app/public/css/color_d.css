@@ -1,0 +1,34 @@
+.color_sch_d{
+    background-color: #C6F5F0;
+    
+    
+}
+
+.color_sch_form{
+    
+}
+
+.color_sch_border{
+    border: 1px solid #77A8A3;
+}
+
+@keyframes nav-fade {
+    0%   {background-color: #C6F5F0}
+    100%  {background-color: #77A8A3;}
+}
+
+@keyframes button-fade {
+    0%   {background-color: white}
+    100%  {background-color: #77A8A3;}
+}
+
+a:link, a:visited {
+    color: black;
+    text-decoration-line: none;
+}
+
+a:hover {
+    animation: 0.5s;
+    animation-name: nav-fade;
+    background-color: #77A8A3;
+}

@@ -1,0 +1,56 @@
+.list_lat{
+    display: block;
+    float: left;
+    border: solid red 1px;
+    width: 100%;
+    padding-left: 0px;
+    margin-top: 0px;
+    list-style-type: none;
+    
+}
+
+.list_item{
+    list-style-type: none;
+    text-align: center;
+    padding-left: 0px;
+    border: solid blue 1px;
+    padding: 10px 0px;
+}
+
+.menu_container{
+    position: relative;
+    display: block;
+    float: left;
+    width: 20vw;
+    margin-top: 16px;
+}
+
+.user_data_space{
+    float: left;
+    margin-top: 16px;
+    border: solid red 1px;
+    width: 50vw;
+    height: 600px;
+}
+
+.user_info{
+    margin-bottom: 10px;
+    border: solid red 1px;
+    width: 100%;
+}
+
+.user_cons{
+    margin-bottom: 10px;
+    border: solid blue 1px;
+    width: 100%;
+}
+
+.user_hist{
+    margin-bottom: 10px;
+    border: solid green 1px;
+    width: 100%;
+}
+
+.list_item a{
+    width: 20px;
+}

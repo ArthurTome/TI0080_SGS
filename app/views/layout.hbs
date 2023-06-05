@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="css/general.css" />
+    <link rel="stylesheet" href="css/forms.css" />
+    <link rel="stylesheet" href="css/userpage.css" />
+    <link rel="stylesheet" href="css/color_d.css" id="color_sch"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans" />
+    
+
+    <script src="js/main.js"></script>
+    <title>Gestão Saúde</title>  
+
+</head>
+
+<body>
+    <header>
+        <nav class="color_sch_d">
+            <a href="/" method="GET" title="Gestão Saúde" class="nav_img nav_element">
+                <img action="/home" src="images/logo_ico_sf.png" alt="system logo" />
+            </a>
+            <a class="nav_element"> Sua Saude</a>
+            <a class="nav_element"> Atendimento</a>
+            <a class="nav_element"> Nossa Equipe</a>
+            <a href="/login"  method="GET"  class="nav_element right_itens">
+                <i class="fa fa-user-circle" style="font-size: 24px"></i>
+            </a>
+            <div class="nav_slide_element">
+                <input id="nigth_check" class="apple-switch" type="checkbox" onclick="NigthMode(event)">
+            </div>
+      
+        </nav>
+    </header>
+  
+    {{{body}}}
+  
+    <footer class="color_sch_d">
+        <div class="center_footer">
+            TI0080 SGS
+        </div>
+    
+        <a class="social_icons right_itens">
+            <i class="fa fa-facebook" style="font-size: 15px"></i>
+        </a>
+        <a class="social_icons right_itens">
+            <i class="fa fa-twitter" style="font-size: 15px"></i>
+        </a>
+        <a class="social_icons right_itens">
+            <i class="fa fa-google" style="font-size: 15px"></i>
+        </a>
+    </footer>
+</body>
+
+</html>

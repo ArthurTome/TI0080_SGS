@@ -1,44 +1,38 @@
-.login_form{
+.form{
+    display: block;
+    position: relative;
+    top: 0px;
+    float: right;
     border-radius: 4px;
-    margin: auto;
-    margin-top: 10vh;
-    max-width: 500px;
-    border-radius: 10px;
-    border: solid #77A8A3 1px;
-    background-color: #C6F5F0;
+    margin-right: 15vw;
+    margin-top: 15vh;
+    margin-bottom: 15vh;
+    width: 500px;
+    border-radius: 7px;
+    
+    border: 1px solid red;
 }
 
-.login_form h1{
+.form h1{
     text-align: center;
 }
 
 form{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding-left: 2vw;
-    padding-right: 2vw;
+    padding: 2vw 2vh;
 }
 
 input{
-    width: 100%;
+    width: 99%;
     height: 30px;
     margin-bottom: 1vh;
-    text-align: center;
-    border-radius: 8px;
-    border: 1px solid #77A8A3;
-}
-
-@keyframes button-fade {
-    0%   {background-color: white}
-    100%  {background-color: #77A8A3;}
+    border-radius: 5px;
 }
 
 input[type=submit]{
     background-color: white;
     width: 60%;
     align-self: flex-end;
-    padding-right: 0;
+    padding: 0px 2px;
     margin-right: 0
 }
 

@@ -1,0 +1,76 @@
+<!--
+Esse html é utilizado para mostrar todos os 
+exames realizados por determinado paciente
+-->
+{{{body}}}
+<nav id="nav_hor">
+  <ul>
+    <li>
+      <a href="#" method="GET">Dados Pessoais</a>
+    </li>
+    <li>
+      <a href="#">Marcar Consulta</a>
+    </li>
+    <li>
+      <a href="#">Marcar Exame</a>
+    </li>
+
+    <li>
+      <a href="#">Fatura</a>
+    </li>
+    <li>
+      <ul id="mainMenu">
+        <a href="#">Histórico</a>
+        <li>
+          <a href="/select_consults" method="GET">Consultas Realizadas</a>
+        </li>
+        <li>
+          <a href="/select_exams" method="GET">Exames Realizados</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+</nav>
+
+<div class="user_data_space">
+  <h2> Exames Realizados</h2>
+  <table class="tables_data">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Data do exama</th>
+        <th>Nome do paciente</th>
+        <th>Descrição do exame</th>
+        <th>Médico solicitante</th>
+        <th>Data do registro</th>
+        <th>Deletar</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      {{#each exams}}
+
+      <tr>
+        <td>{{this.id}}</td>
+        <td>{{this.data}}</td>
+        <td>{{this.description_exam}}</td>
+        <td>{{this.pacient_name}}</td>
+        <td>{{this.doctor_name}}</td>
+        <td>{{this.createdAt}}</td>
+        <td>
+          <form action="/del_exam/{{this.id}}" method="POST">
+            <button type="submit" class="btn btn-link" style="padding: 0;">
+              <i class="fa fa-trash" style="font-size: 20px"></i>
+            </button>
+          </form>
+        </td>
+
+      </tr>
+
+      {{/each}}
+
+    </tbody>
+
+  </table>
+</div>
