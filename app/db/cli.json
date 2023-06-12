@@ -1,0 +1,37 @@
+[
+    {
+      "userid": 1,
+      "user": "luiz",
+      "password": "7f68cc69c5b2a57e22307f57ea2daf75d73c7c1bd67bd1dd24b2319677f488d63087f2f3ee9a8e3e041613603b37cd8d233855bfb026d5280100a4e3c19efc0d"
+    },
+    {
+      "userid": 2,
+      "user": "joao",
+      "password": "7e4adc0121fe701db5c975ae858a07b9ae88ef4cea6787b4bc3a51cb5dc837f2a423551daa9a15266e85b98741586bdd172bd49cc9305eac8d1a38c8fe22fae5"
+    },
+    {
+      "userid": 3,
+      "user": "fulano",
+      "password": "7f68cc69c5b2a57e22307f57ea2daf75d73c7c1bd67bd1dd24b2319677f488d63087f2f3ee9a8e3e041613603b37cd8d233855bfb026d5280100a4e3c19efc0d"
+    },
+    {
+      "userid": 4,
+      "user": "beltrano",
+      "password": "7f68cc69c5b2a57e22307f57ea2daf75d73c7c1bd67bd1dd24b2319677f488d63087f2f3ee9a8e3e041613603b37cd8d233855bfb026d5280100a4e3c19efc0d"
+    },
+    {
+      "userid": 5,
+      "user": "Cicrano",
+      "password": "e6a3a6151b066f0a86abc57f44c68b28f3a6069404e10cedc504162771c5d6e08c806bfcb09a2d1ae91fa38c63fb0ca75bd71d0dea7f47d8f38004632d184b77"
+    },
+    {
+      "userid": 6,
+      "user": "Cicrano2",
+      "password": "e42182f1d52dc3f080fa89fa0f7e8bbfebf2610db0950eb02b875f251d569407fc3ec5717b5719a6ffed48dc2a09c74e51b2ea8e9f05b4b44313134caf9d9bda"
+    },
+    {
+      "userid": 7,
+      "user": "Cicrano3",
+      "password": "58e3e163ecee894b164e168c6b690eb2016db15abf75f4e01e458caf1ef4aaa5ce3c6ab33f130d88756ef63a4959061f7605ef885f63dc05ff1bbfcbbd8e0e66"
+    }
+  ]
