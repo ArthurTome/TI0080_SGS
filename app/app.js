@@ -28,6 +28,7 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 // LISTA DE TOLKENS INVALIDADOS
 const blacklist = []
@@ -42,6 +43,8 @@ var sha512 = (pwd, salt) => {
     return hash.digest('hex') 
 }
 
+// PUXA O TOKEN DO HEADER (TEM QUE CONFIGURAR NO JWT)
+// AINDA ESTUDANDO COMO FUNCIONA
 function verifyJWT(req, res, next) {
     const token = req.headers['x-access-token']
 
@@ -93,23 +96,22 @@ function create_user(userid, user, password) {
     )
 }
 
-
 // --------------------| CRIA ROTAS |--------------------
 app.get('/', (req, res) => {
     res.status(200).render('home');             // PROCURA ARQUIVO home.hbs
-    var rand = Math.random()*1e16;
-    console.log(rand);
 })
 
 app.get('/login', (req, res) => {
     res.status(200).render('login');            // PROCURA ARQUIVO login.hbs
 })
 
-app.get('/create', verifyJWT, (req, res) => {
+app.get('/create', (req, res) => {
     res.status(200).render('create');           // PROCURA ARQUIVO create.hbs
 })
 
-app.get('/users', verifyJWT, (req, res) => {
+app.get('/users', (req, res) => {
+    console.log(req.cookies.user_token);
+
     res.status(200).render('users');            // PROCURA ARQUIVO users.hbs
 })
 
@@ -146,22 +148,28 @@ app.post('/auth', (req, res) => {
         })
         console.log(userloc);
         if (userloc) {                                  // VERIFICA SE ESTA NA BASE DE CLIENTES
-            const token = jwt.sign(
-                { userid: userloc.userid }, // payload (podem ser colocadas outras infos)
-                process.env.SECRET, // chave definida em .env
-                { expiresIn: 300 }  // em segundos
-            )
-            return res.json({ auth: true, token });
+            var rand = Math.random()*1e16;
+            //const token = jwt.sign(
+            //    { userid: userloc.userid }, // payload (podem ser colocadas outras infos)
+            //    process.env.SECRET, // chave definida em .env
+            //    { expiresIn: 300 }  // em segundos
+            //)
+            //return res.json({ auth: true, token });
+            res.cookie('user_token', rand, { expires: new Date(Date.now() + 900000)});
+            
         }
         //if (username === 'admin' && password === 'admin') {
         //
         //    res.status(201).render('users');        // LOGIN OK
         //}
+        res.status(200).redirect('users');
     }
-    res.status(401).end('Login failed');   // FALHA DE LOGIN
+    
+    //res.status(401).end('Login failed');   // FALHA DE LOGIN
 })
 
 // --------------------| FILE SYSTEM |-------------------
+/*
 fs.readFile('./db/db.json', 'utf8', (err, file_user) =>{
     if(err) {
         console.error(err);
@@ -178,7 +186,7 @@ fs.readFile('./db/db.json', 'utf8', (err, file_user) =>{
         console.error(err)
     }
 })
-
+*/
 // --------------------| OUVE PORTA |--------------------
 app.listen(PORTA, () => {
     // LOG
