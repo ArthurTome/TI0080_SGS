@@ -25,6 +25,15 @@
     margin-top: 16px;
 }
 
+.menu_container a{
+    min-width: 200px;
+    text-align: center;
+    display: block;
+    width: 80%;
+    height: 30px;
+    margin: 0px auto;
+}
+
 .user_data_space{
     float: left;
     margin-top: 16px;
