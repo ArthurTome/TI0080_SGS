@@ -20,7 +20,7 @@
     "hbs": "^4.2.0",
     "jsonwebtoken": "^9.0.0",
     "mysql2": "^3.3.2",
-    "nodemon": "^2.0.22",
+    "nodemon": "^1.14.9",
     "sequelize": "^6.31.1"
   }
 }

@@ -1,0 +1,19 @@
+{{{body}}}
+<table>
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>ID</th>
+      </tr>
+    </thead>
+    <tbody>
+        {{#each dados}}
+      <tr>
+        <td>{{username}}</td>
+        <td>{{email}}</td>
+        <td><a href="{{id}}"  method="GET">{{id}}</a></td>
+      </tr>
+        {{/each}}
+      </tbody>
+  </table>
