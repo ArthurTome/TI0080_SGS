@@ -244,7 +244,8 @@ app.post('/add_user', async (req, res) => {
     let user_type = req.body.user_type;
     let user_plan = req.body.user_plan;
     let user_pass = req.body.password;
-    let dados = { 'user_name': user_name,
+    let dados = { 
+         'user_name': user_name,
          'user_data': user_data, 'user_plan': user_plan,
          'user_pass': user_pass, 'user_type': user_type, 
          'user_phone': user_phone, 'user_mail': user_mail, 
@@ -303,7 +304,7 @@ app.post('/add_exam', async (req, res) => {
     let descrip_exam = req.body.descricao_exame;
     let local_exam = req.body.local_do_exame;
     let name_pacient = req.body.nome_paciente;
-    let dados = { 'user_name': user_name,
+    let dados = { 
          'date_exam': date_exam, 'name_pacient': name_pacient,
          'descrip_exam': descrip_exam, 'local_exam': local_exam, 
         }
@@ -368,7 +369,8 @@ app.get('/', function(req, res, next) {
     res.render('form', { title: 'Express' });
   });
   
-/* GET users listing. */
+/* routa para selecionar todos os usuários
+que estão no arquivo json*/
 app.get('/select_users', async function (req, res, next) { 
     try { 
         const response = await fetch('http://localhost:4000/selectUser/'); 
@@ -384,7 +386,8 @@ app.get('/select_users', async function (req, res, next) {
     } 
 })
 
-/* GET users listing. */
+/* um modelo para inserir novos dados no json
+de forma assinc */
 app.post('/', async function(req, res, next) {
     let username = req.body.username; 
     let email = req.body.email;
