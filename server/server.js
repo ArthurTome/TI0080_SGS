@@ -8,14 +8,14 @@ const PORTA = 4000;  // PORTA DO SERVICO
 // ----------------| PACOTES UTILIZADOS |----------------
 const createError = require('http-errors');
 const express = require('express');
-const path = require('path');
 const bodyParser = require("body-parser");
-const fs = require('fs');
-
+var fs = require('fs');
+const path = require('path')
 const uuid = require('uuid')                 // GERA CARACTERES ALEATORIOS
 
 // -----------------| CRIA E CONFIGURA |-----------------
 const app = express();
+app.set('view engine', 'hbs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -25,6 +25,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.post('/', (req, res) => {
     console.log(req.query.var);
     res.status(200).end();
+})
+
+app.get('/home', (req, res) => {
+    res.render('index');
 })
 
 // RECEBE OS DADOS DE LOGIN E EMITE UMA AUTORIZAÇÃO
@@ -116,6 +120,94 @@ app.post('/token_verify', (req, res) => {
 
     return res.status(401).send('Usuario não identificado');
 })
+
+
+//rota para selecionar os dados de usuarios
+app.get('/selectUser', (req, res) => {
+        
+    // Lendo o conteúdo do arquivo user.json
+    const json = fs.readFileSync(__dirname + '/public/user.json')
+    const users = JSON.parse(json)
+    
+    res.json(users)
+
+   });
+   
+
+//rota para selecionar os dados de exames
+app.get('/selectExam', (req, res) => {
+    // Lendo o conteúdo do arquivo user.json
+    const json = fs.readFileSync(__dirname + '/public/exam.json')
+    const exams = JSON.parse(json)
+    res.json(exams)
+
+   });
+
+app.get('/selectCons', (req, res) => {
+    // Lendo o conteúdo do arquivo user.json
+    const json = fs.readFileSync(__dirname + '/public/consulta.json')
+    const consultas = JSON.parse(json)
+    res.json(consultas)
+
+   });
+
+   
+
+app.post('/insertUser', (req, res) => {
+    var dados = req.body;
+  
+    var users = JSON.parse(fs.readFileSync(__dirname + '/public/user.json'));
+    
+    users.push(dados);
+    
+    fs.writeFile(__dirname + '/public/user.json', JSON.stringify(users), (err) => {
+      if (err) {
+        console.error(err);
+        res.sendStatus(500);
+      } else {
+        console.log('Data successfully written to user.json');
+        res.sendStatus(200);
+      }
+    });
+  });
+
+  
+app.post('/insertExam', (req, res) => {
+    var dados = req.body;
+  
+    var exams = JSON.parse(fs.readFileSync(__dirname + '/public/exam.json'));
+    
+    exams.push(dados);
+    
+    fs.writeFile(__dirname + '/public/exam.json', JSON.stringify(exams), (err) => {
+      if (err) {
+        console.error(err);
+        res.sendStatus(500);
+      } else {
+        console.log('Data successfully written to exam.json');
+        res.sendStatus(200);
+      }
+    });
+  });
+
+app.post('/insertCons', (req, res) => {
+    var dados = req.body;
+  
+    var consultas = JSON.parse(fs.readFileSync(__dirname + '/public/consulta.json'));
+    
+    consultas.push(dados);
+    
+    fs.writeFile(__dirname + '/public/consulta.json', JSON.stringify(consultas), (err) => {
+      if (err) {
+        console.error(err);
+        res.sendStatus(500);
+      } else {
+        console.log('Data successfully written to consultas.json');
+        res.sendStatus(200);
+      }
+    });
+  });
+  
 
 // --------------------| OUVE PORTA |--------------------
 app.listen(PORTA, () => {

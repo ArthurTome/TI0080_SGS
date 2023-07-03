@@ -3,6 +3,7 @@ Esse html é utilizado para mostrar todos as
 consultas realizadas por determinado paciente
 -->
 {{{body}}}
+<main>  
 <nav id="nav_hor">
   <ul>
     <li>
@@ -44,10 +45,8 @@ consultas realizadas por determinado paciente
     <thead>
     <tr>
         <th>ID</th>
-        <th>Nome do Paciente</th>
-        <th>Descrição Consulta</th>
-        <th>Data de Nascimento</th>
         <th>Data da consulta</th>
+        <th>Nome do Paciente</th>
         <th>Nome do Médico</th>
         <th>Local</th>
         <th>Deletar</th>
@@ -57,12 +56,10 @@ consultas realizadas por determinado paciente
       {{#each consultas}}
     <tr>
         <td>{{this.id}}</td>
-        <td>{{this.pacient_name}}</td>
-        <td>{{this.description_consult}}</td>
-        <td>{{this.data_nasc}}</td>
-        <td>{{this.createdAt}}</td>
-        <td>{{this.doctor_name}}</td>
-        <td>{{this.local_consul}}</td>
+        <td>{{cons_data}}</td>
+        <td>{{this.name_pacient}}</td>
+        <td>{{this.cons_medico}}</td>
+        <td>{{this.cons_local}}</td>
         <td>
           <form action="/del_cons/{{this.id}}" method="POST">
             <button type="submit" class="btn btn-link" style="padding: 0;">
@@ -77,4 +74,6 @@ consultas realizadas por determinado paciente
       
   </table>
 </div>
+</main>
+
 

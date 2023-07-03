@@ -243,13 +243,14 @@ app.post('/add_user', async (req, res) => {
 //Routa para adiciona consulta atraves 
 // de chamada assinc
 app.post('/add_consulta', async (req, res) => {
-
+    let id = req.body.id;
     let cons_data = req.body.data_consulta;
     let name_pacient = req.body.paciente;
     let cons_local = req.body.local_consulta;
     let cons_medico = req.body.medico;
-    let dados = { 'user_name': user_name,
-         'user_data': cons_data, 'name_pacient': name_pacient,
+    let dados = { 
+         'id': id,
+         'cons_data': cons_data, 'name_pacient': name_pacient,
          'cons_local': cons_local, 'cons_medico': cons_medico, 
         }
     
@@ -271,12 +272,13 @@ app.post('/add_consulta', async (req, res) => {
 //route para adicionar exames
 //chamada assinc
 app.post('/add_exam', async (req, res) => {
-
+    let id = req.body.id;
     let date_exam = req.body.data_exame;
     let descrip_exam = req.body.descricao_exame;
     let local_exam = req.body.local_do_exame;
     let name_pacient = req.body.nome_paciente;
     let dados = { 
+         'id': id, 
          'date_exam': date_exam, 'name_pacient': name_pacient,
          'descrip_exam': descrip_exam, 'local_exam': local_exam, 
         }
@@ -370,6 +372,10 @@ app.get('/', function(req, res, next) {
     res.render('form', { title: 'Express' });
   });
   
+app.get('/consultas', function(req, res, next) {
+    res.render('consultas');
+  });
+  
 /* routa para selecionar todos os usuários
 que estão no arquivo json*/
 app.get('/select_users', async function (req, res, next) { 
@@ -386,6 +392,23 @@ app.get('/select_users', async function (req, res, next) {
         res.status(500).send({ err: 'deu erro!!' }) 
     } 
 })
+
+// é necessário passar uma chave como parâmetro
+app.get('/select_cons', async function (req, res, next) { 
+    try { 
+        const response = await fetch('http://localhost:4000/selectCons/'); 
+        if (response.status === 200) { 
+            const json = await response.json()
+            var cons = json.find(consulta => consulta.cons_medico === json.cons_medico);
+            res.render('consultas', { consultas: cons }) 
+        } else { 
+            throw "Deu erro!!" 
+        } 
+    } catch (ex) { 
+        res.status(500).send({ err: 'deu erro!!' }) 
+    } 
+})
+
 
 /* um modelo para inserir novos dados no json
 de forma assinc */
