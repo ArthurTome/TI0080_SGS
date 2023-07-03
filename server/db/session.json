@@ -1,7 +1,7 @@
 [
   {
     "user": "Cicrano3",
-    "sesion_token": "c656ae16-4854-4f2c-9bba-35add02a337d"
+    "sesion_token": "5741b9e3-967f-4e42-be92-c586c50d2b2e"
   },
   {
     "user": "beltrano",
@@ -14,5 +14,9 @@
   {
     "user": "fulano",
     "sesion_token": "cb42593c-104c-4a70-a879-9281fccd1c79"
+  },
+  {
+    "user": "arthur_tome",
+    "sesion_token": "c83c5422-2316-4741-a4b8-00d925df89dd"
   }
 ]

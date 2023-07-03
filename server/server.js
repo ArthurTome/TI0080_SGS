@@ -31,6 +31,13 @@ app.get('/home', (req, res) => {
     res.render('index');
 })
 
+app.post('/notices', (req, res) => {
+  var notices = JSON.parse(fs.readFileSync(__dirname + '/db/notices.json'));
+  console.log([notices.at(-1), notices.at(-2)]);
+  //res.status(200);
+  return res.status(200).end(JSON.stringify(notices));
+})
+
 // RECEBE OS DADOS DE LOGIN E EMITE UMA AUTORIZAÇÃO
 app.post('/user_login', (req, res) => {
     // Lendo o conteúdo do arquivo user.json
@@ -104,7 +111,7 @@ app.post('/token_verify', (req, res) => {
     let user_token = req.body.user_token;
     var session = JSON.parse(fs.readFileSync(__dirname + '/db/session.json'))  // db de token
     var user_data = JSON.parse(fs.readFileSync(__dirname + '/db/cli_data.json'))  // db de token
-    console.log(user_token);
+    //console.log(user_token);
     var token_check = session.findIndex((item) => {
         return (item.sesion_token == user_token)
     })
@@ -114,7 +121,7 @@ app.post('/token_verify', (req, res) => {
         var user_check = user_data.findIndex((item) => {
             return (item.user == session[token_check].user);
         })
-        console.log(user_data[user_check]);
+        //console.log(user_data[user_check]);
         return res.status(200).end(JSON.stringify(user_data[user_check]));
     }
 
@@ -154,21 +161,52 @@ app.get('/selectCons', (req, res) => {
    
 
 app.post('/insertUser', (req, res) => {
-    var dados = req.body;
-  
-    var users = JSON.parse(fs.readFileSync(__dirname + '/public/user.json'));
+    //var users = JSON.parse(fs.readFileSync(__dirname + '/public/user.json'));
+    var cli_data = JSON.parse(fs.readFileSync(__dirname + '/db/cli_data.json'));
+    var cli = JSON.parse(fs.readFileSync(__dirname + '/db/cli.json'));
+
+    var user_data = {
+      "user": req.body.user_login,
+      "user_name": req.body.user_name,
+      "user_data": req.body.user_data,
+      "user_aborh": "o+",
+      "user_addr": req.body.user_addr,
+      "user_numb": req.body.user_numb,
+      "user_phone": req.body.user_phone,
+      "user_mail": req.body.user_mail,
+      "user_cpf": req.body.user_cpf,
+      "user_rel": "solteiro",
+      "user_type": req.body.user_type,
+      "user_plan": "default"
+    }
+
+    var user = {
+      "user": req.body.user_login,
+      "password": req.body.user_pass
+    }
+
+    cli_data.push(user_data);
+    cli.push(user);
     
-    users.push(dados);
-    
-    fs.writeFile(__dirname + '/public/user.json', JSON.stringify(users), (err) => {
+    fs.writeFileSync(__dirname + '/db/cli_data.json', JSON.stringify(cli_data, null, 2), (err) => {
       if (err) {
         console.error(err);
-        res.sendStatus(500);
+        return res.sendStatus(500);
       } else {
-        console.log('Data successfully written to user.json');
-        res.sendStatus(200);
+        console.log('Data successfully written to cli_data.json');
       }
     });
+
+    fs.writeFileSync(__dirname + '/db/cli.json', JSON.stringify(cli, null, 2), (err) => {
+      if (err) {
+        console.error(err);
+        return res.sendStatus(500);
+      } else {
+        console.log('Data successfully written to cli.json');
+      }
+    });
+
+    res.sendStatus(200);
   });
 
   

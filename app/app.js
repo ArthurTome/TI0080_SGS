@@ -43,43 +43,33 @@ var sha512 = (pwd, salt) => {
     return hash.digest('hex') 
 }
 
-// CRIA USUARIO COM SENHA CONDIFICADA E INSERE NA BASE DE DADOS
-// AINDA NÃO MODIFICADO
-//function create_user(userid, user, password) {
-//
-//    var users = JSON.parse(fs.readFileSync(__dirname + '/db/cli.json'))
-//
-//    for (var i in users) {
-//        if (users[i].userid == userid ||
-//            users[i].user == user) {
-//            console.log(`usuário ${user} e/ou id ${userid} já existem!  ITEM NAO CADASTRADO!`)
-//            return
-//        }
-//    }
-//
-//    var pp = sha512(password, process.env.SECRET_USERS)
-//
-//    users.push({
-//        "userid": userid,
-//        "user": user,
-//        "password": pp
-//    }) 
-//    
-//    //console.log(users)
-//
-//    fs.writeFileSync(__dirname + '/db/cli.json',
-//        JSON.stringify(users, null, 2)
-//    )
-//}
-
-
 // --------------------| MIDLEWARE |---------------------
 
 
 // --------------------| CRIA ROTAS |--------------------
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
     // 1. BUSCA POR INFORMACOES PARA EXIBIR EM (NOTICES)
-    res.status(200).render('home');             // PROCURA ARQUIVO home.hbs
+    var fecth_data = {  
+        method:'POST',
+        headers : { 'Content-Type': 'application/json' }
+    };
+
+    try { 
+        const response = await fetch('http://localhost:4000/notices', fecth_data); 
+        if (response.status === 200) { 
+            const json = await response.json()
+            console.log(json[0].notice);
+
+            return res.status(200).render('home',
+                                    {json: json[0]},
+                                    );  // PROCURA ARQUIVO home.hbs
+        } else { 
+            throw "Deu erro!!" 
+        } 
+    } catch (ex) { 
+        // PROCURA ARQUIVO login.hbs
+        return res.status(404).send('NOT FOUND');
+    }
 })
 
 
@@ -88,7 +78,6 @@ app.get('/', (req, res) => {
 app.get('/login', async(req, res) => {
 
     var user_token = req.cookies.user_token;
-    console.log(user_token);
 
     let token_user = {  'user_token': user_token};
     var fecth_data = {  method:'POST',
@@ -101,7 +90,7 @@ app.get('/login', async(req, res) => {
             const json = await response.json()
 
             console.log(json);
-            return res.status(200).redirect('users');
+            return res.status(200).redirect('/users');
         } else { 
             throw "Deu erro!!" 
         } 
@@ -131,7 +120,6 @@ app.get('/users', async (req, res) => {
     // 3. REDERIZA A PAGINA USANDO DADOS DE USUARIO
     
     var user_token = req.cookies.user_token;
-    console.log(user_token);
 
     let token_user = {  'user_token': user_token};
     var fecth_data = {  method:'POST',
@@ -143,8 +131,6 @@ app.get('/users', async (req, res) => {
         const response = await fetch('http://localhost:4000/token_verify', fecth_data); 
         if (response.status === 200) { 
             const json = await response.json()
-
-            console.log(json);
 
             if (json.user_type == "0"){            // USUARIO ADMINISTRATIVO
                 return res.status(200).render('admin',
@@ -186,7 +172,6 @@ app.post('/add_user', async (req, res) => {
     // 3. REDIRECIONA PARA 'USERS'
 
     var user_token = req.cookies.user_token;
-    console.log(user_token);
 
     let token_user = {  'user_token': user_token};
     var fecth_data = {  method:'POST',
@@ -199,19 +184,20 @@ app.post('/add_user', async (req, res) => {
         const json = await response.json()
 
         if (json.user_type == "0"){
-            let user_name = req.body.name;
+            let user_login = req.body.login;
+            let user_name = req.body.user_name;
             let user_data = req.body.data;
             let user_addr = req.body.addr;
             let user_numb = req.body.numb;
             let user_phone = req.body.phone;
             let user_mail = req.body.mail;
             let user_type = req.body.user_type;
-            let user_plan = req.body.user_plan;
-            let user_pass = req.body.password;
+            let user_cpf = req.body.user_cpf;
+            let user_pass = sha512(req.body.password, process.env.SECRET_USERS);
         
             let dados = { 
-                 'user_name': user_name,
-                 'user_data': user_data, 'user_plan': user_plan,
+                 'user_login': user_login,'user_name': user_name,
+                 'user_data': user_data, 'user_cpf': user_cpf,
                  'user_pass': user_pass, 'user_type': user_type, 
                  'user_phone': user_phone, 'user_mail': user_mail, 
                  'user_numb': user_numb, 'user_addr': user_addr        
@@ -224,9 +210,9 @@ app.post('/add_user', async (req, res) => {
                 body: JSON.stringify(dados),
                 headers : { 'Content-Type': 'application/json' },
             })
-                return res.status(200).redirect('users');
+                return res.status(200).redirect('/users');
             } catch (ex) { 
-                res.status(500).send({ erro: 'deu erro!!' }) 
+                return res.status(500).send({ erro: 'deu erro!!' }) 
             }    
             }
         } else { 
@@ -234,7 +220,7 @@ app.post('/add_user', async (req, res) => {
         } 
     } catch (ex) { 
         // PROCURA ARQUIVO login.hbs
-        return res.status(401).render('Não autorizado');
+        return res.status(401).send('Não autorizado');
     }
 
 });
@@ -353,17 +339,7 @@ app.post('/auth', async (req, res) => {
     } catch (ex) {
         return res.status(401).send('Email ou Senha Incorretos');   // FALHA DE LOGIN 
     } 
-    //let username = req.body.username;
-    //let password = sha512(req.body.password, process.env.SECRET_USERS);
 
-    //userloc = login(username, password);
-
-    //if (userloc) {                                  // VERIFICA SE ESTA NA BASE DE CLIENTES
-    //    var session_token = token_modify(username);
-    //    res.cookie('user_token', session_token, { expires: new Date(Date.now() + 900000)});  // 15 MIN
-    //    return res.status(200).redirect('users');   // ENCERRA CAMINHO (SEM ERRO DE REENVIO)
-    //}
-    
     res.status(500).send('Erro Interno');   // FALHA DE LOGIN
 })
 
@@ -431,8 +407,6 @@ app.post('/', async function(req, res, next) {
         res.status(500).send({ erro: 'deu erro!!' }) 
     }       
 });
-
-
 
 // --------------------| OUVE PORTA |--------------------
 app.listen(PORTA, () => {

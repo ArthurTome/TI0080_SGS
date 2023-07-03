@@ -4,26 +4,28 @@
             <h1>Criar Conta</h1>
             <h2>Dados Basicos</h2>
             <form action="/add_user" method="POST">
+                Login
+                <input class="color_sch_border" type="text" name="login" required>
                 Nome
-                <input class="color_sch_border" type="text" name="nome" placeholder="nome">
+                <input class="color_sch_border" type="text" name="user_name">
                 Data de Nascimento
                 <input class="color_sch_border" type="date" name="data">
-                {{!-- Endereço
+                Endereco
                 <input class="color_sch_border" type="text" name="addr">
                 Numero
                 <input class="color_sch_border" type="text" name="numb">
                 Telefone
-                <input class="color_sch_border" type="text" name="phone"> --}}
+                <input class="color_sch_border" type="text" name="phone">
                 Email
-                <input class="color_sch_border" type="email" name="mail" placeholder="email">
+                <input class="color_sch_border" type="email" name="mail">
                 Tipo de Usuário
-                <input class="color_sch_border" type="text" name="user_type" placeholder="nome">
-                Tipo de Plano
-                <input class="color_sch_border" type="text" name="usr_plan">
+                <input class="color_sch_border" type="text" name="user_type">
+                CPF
+                <input class="color_sch_border" type="text" name="user_cpf">
                 Digite a Senha
-                <input class="color_sch_border" type="password" name="password" placeholder="nova senha">
+                <input class="color_sch_border" type="password" name="password" required>
                 Repita a senha
-                <input class="color_sch_border" type="password" placeholder="repita a senha">
+                <input class="color_sch_border" type="password" required>
                 <input class="color_sch_border" type="submit" value="Enviar">
             </form>
         </div>
