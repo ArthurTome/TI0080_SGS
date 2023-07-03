@@ -100,7 +100,7 @@ app.post('/token_verify', (req, res) => {
     let user_token = req.body.user_token;
     var session = JSON.parse(fs.readFileSync(__dirname + '/db/session.json'))  // db de token
     var user_data = JSON.parse(fs.readFileSync(__dirname + '/db/cli_data.json'))  // db de token
-    
+    console.log(user_token);
     var token_check = session.findIndex((item) => {
         return (item.sesion_token == user_token)
     })
@@ -108,9 +108,9 @@ app.post('/token_verify', (req, res) => {
 
     if(token_check != -1){
         var user_check = user_data.findIndex((item) => {
-            return (item.user == session[token_check].user)
+            return (item.user == session[token_check].user);
         })
-
+        console.log(user_data[user_check]);
         return res.status(200).end(JSON.stringify(user_data[user_check]));
     }
 

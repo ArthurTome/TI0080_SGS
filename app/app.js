@@ -74,31 +74,7 @@ var sha512 = (pwd, salt) => {
 
 
 // --------------------| MIDLEWARE |---------------------
-async function redirect_login(){
-    var user_token = req.cookies.user_token;
-    console.log(user_token);
 
-    let token_user = {  'user_token': user_token};
-    var fecth_data = {  method:'POST',
-                        body: JSON.stringify(token_user),
-                        headers : { 'Content-Type': 'application/json' }
-                        };
-
-    try { 
-        const response = await fetch('http://localhost:4000/token_verify', fecth_data); 
-        if (response.status === 200) { 
-            const json = await response.json()
-
-            //console.log(json);
-            return next();              // REDIRECIONA USUARIOS NÃO LOGADOS
-        } else { 
-            throw "Deu erro!!" 
-        } 
-    } catch (ex) { 
-        // PROCURA ARQUIVO login.hbs
-        return res.status(200).render('login');
-    }
-}
 
 // --------------------| CRIA ROTAS |--------------------
 app.get('/', (req, res) => {
@@ -119,7 +95,6 @@ app.get('/login', async(req, res) => {
                         body: JSON.stringify(token_user),
                         headers : { 'Content-Type': 'application/json' }
                         };
-
     try { 
         const response = await fetch('http://localhost:4000/token_verify', fecth_data); 
         if (response.status === 200) { 
@@ -172,23 +147,27 @@ app.get('/users', async (req, res) => {
             console.log(json);
 
             if (json.user_type == "0"){            // USUARIO ADMINISTRATIVO
-                return res.status(200).render('admin');
+                return res.status(200).render('admin',
+                {json: json});
             }
             if (json.user_type == "1"){            // USUARIO ADMINISTRATIVO
-                return res.status(200).render('users');
+                return res.status(200).render('users',
+                {json: json});
             }
             if (json.user_type == "2"){            // USUARIO MEDICO
-                return res.status(200).render('doctor');
+                return res.status(200).render('doctor',
+                {json: json});
             }
 
         } else { 
             throw "Deu erro!!" 
         } 
     } catch (ex) { 
-        return res.status(500).send({ err: 'Erro aqui!' }) 
+        return res.status(401).send('novo login');
     }
+    res.status(500).send({ err: 'Erro aqui!' }) 
 
-    res.status(401).send('Não autorizado');             // ROTA PADRÃO
+                 // ROTA PADRÃO
     //res.status(401).send('Expirado por favor realize novo login');
 })
 
@@ -206,36 +185,57 @@ app.post('/add_user', async (req, res) => {
     // 2. CADASTRA USUARIO NAS BASES (USERS) (USERS_INFO)
     // 3. REDIRECIONA PARA 'USERS'
 
-    let user_name = req.body.name;
-    let user_data = req.body.data;
-    let user_addr = req.body.addr;
-    let user_numb = req.body.numb;
-    let user_phone = req.body.phone;
-    let user_mail = req.body.mail;
-    let user_type = req.body.user_type;
-    let user_plan = req.body.user_plan;
-    let user_pass = req.body.password;
+    var user_token = req.cookies.user_token;
+    console.log(user_token);
 
-    let dados = { 
-         'user_name': user_name,
-         'user_data': user_data, 'user_plan': user_plan,
-         'user_pass': user_pass, 'user_type': user_type, 
-         'user_phone': user_phone, 'user_mail': user_mail, 
-         'user_numb': user_numb, 'user_addr': user_addr        
-        }
-    
-        try {
-        await fetch('http://localhost:4000/insertUser/',
-         {
-            method:'POST',
-            body: JSON.stringify(dados),
-            headers : { 'Content-Type': 'application/json' },
-    
+    let token_user = {  'user_token': user_token};
+    var fecth_data = {  method:'POST',
+                        body: JSON.stringify(token_user),
+                        headers : { 'Content-Type': 'application/json' }
+                        };
+    try { 
+        const response = await fetch('http://localhost:4000/token_verify', fecth_data); 
+        if (response.status === 200) { 
+        const json = await response.json()
+
+        if (json.user_type == "0"){
+            let user_name = req.body.name;
+            let user_data = req.body.data;
+            let user_addr = req.body.addr;
+            let user_numb = req.body.numb;
+            let user_phone = req.body.phone;
+            let user_mail = req.body.mail;
+            let user_type = req.body.user_type;
+            let user_plan = req.body.user_plan;
+            let user_pass = req.body.password;
+        
+            let dados = { 
+                 'user_name': user_name,
+                 'user_data': user_data, 'user_plan': user_plan,
+                 'user_pass': user_pass, 'user_type': user_type, 
+                 'user_phone': user_phone, 'user_mail': user_mail, 
+                 'user_numb': user_numb, 'user_addr': user_addr        
+                }
+            
+            try {
+            await fetch('http://localhost:4000/insertUser/',
+            {
+                method:'POST',
+                body: JSON.stringify(dados),
+                headers : { 'Content-Type': 'application/json' },
             })
-            res.redirect('/')
-          } catch (ex) { 
-            res.status(500).send({ erro: 'deu erro!!' }) 
-        }    
+                return res.status(200).redirect('users');
+            } catch (ex) { 
+                res.status(500).send({ erro: 'deu erro!!' }) 
+            }    
+            }
+        } else { 
+            throw "Deu erro!!" 
+        } 
+    } catch (ex) { 
+        // PROCURA ARQUIVO login.hbs
+        return res.status(401).render('Não autorizado');
+    }
 
 });
 
@@ -336,7 +336,7 @@ app.post('/auth', async (req, res) => {
                     console.log('ate aqui ok');
                     var session_token = json.session_token;
                     res.cookie('user_token', session_token, { expires: new Date(Date.now() + 900000)});
-                    return res.status(200).redirect('users');
+                    return res.status(200).redirect('/users');
                 } 
                 else { 
                     throw "Deu erro!!" 

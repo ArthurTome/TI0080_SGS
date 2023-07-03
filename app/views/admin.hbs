@@ -2,13 +2,38 @@
 <main>
     <div class="menu_container">
 
-        <a href="#">Dados Pessoais</a>
+        <a href="/create_user">Criar Conta</a>
         <a href="#">Marcar Consulta</a>
         <a href="#">Marcar Exame</a>
         <a href="#">Fatura</a>
         <a href="#">Consultas Realizadas</a>
         <a href="#">Exames Realizados</a>
     </div>
-
+        <div class="user_data_space">
+        <table class="user_info">
+            <tr>
+                    <td>Nome Completo</td>
+                    <td colspan="3"> {{{json.user_name}}}</td>
+                </tr>
+            <tr>
+                <td>Email</td>
+                <td>{{{json.user_mail}}}</td>
+                <td>CPF</td>
+                <td>{{{json.user_cpf}}}</td>
+            </tr>
+            <tr>
+                <td>Rua</td>
+                <td>{{{json.user_addr}}}</td>
+                <td>Numero</td>
+                <td>{{{json.user_numb}}}</td>
+            </tr>
+            <tr>
+                <td>E. Civil</td>
+                <td>{{{json.user_rel}}}</td>
+                <td>T. Sanguineo</td>
+                <td>{{{json.user_aborh}}}</td>
+            </tr>
+        </table>
+    </div>
     
 </main>
